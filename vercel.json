@@ -1,6 +1,5 @@
 {
   "buildCommand": null,
-  "outputDirectory": "docs",
-  "installCommand": null,
-  "rootDirectory": "."
+  "outputDirectory": ".",
+  "installCommand": null
 }
