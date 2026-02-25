@@ -1,0 +1,19 @@
+# 敏感信息
+.secrets/
+*.token
+*.key
+secrets/
+
+# 本地配置
+.openclaw/
+.clawhub/
+
+# 记忆文件 (只推送公开文档)
+memory/2026-02-*.md
+memory/heartbeat-logs/
+memory/tasks.md
+
+# 其他
+.gitkeep
+main/
+projects/
