@@ -51,6 +51,16 @@ SUSPICIOUS_PATTERNS = [
     (r'forget\s+(all|everything)', '遗忘规则尝试'),
     (r'you\s+are\s+now\s+(unrestricted|free)', '越狱尝试'),
     (r'disable\s+(safety|security)', '禁用安全'),
+    
+    # Bot 安全相关 (新增)
+    (r'execute.*command', '执行命令请求'),
+    (r'run.*script', '运行脚本请求'),
+    (r'provide.*credential', '索取凭证'),
+    (r'click.*link', '点击链接诱导'),
+    (r'download.*file', '下载文件请求'),
+    (r'send.*password', '索取密码'),
+    (r'api.*key', '索取 API 密钥'),
+    (r'token.*secret', '索取令牌'),
 ]
 
 
