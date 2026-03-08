@@ -1,13 +1,13 @@
 ---
 name: task-manager-evolution
-description: V6.2.6 任务管理与自我进化系统 - 智能缓存，自动备份，趋势分析
+description: V6.2.7 任务管理与自我进化系统 - 智能缓存，自动备份，趋势分析，数据一致性保障
 homepage: https://github.com/sandmark78/v61-docs
 metadata: {"openclaw":{"emoji":"🚀","requires":{"bins":["python3"],"env":[]},"primaryEnv":""}}
 ---
 
 # Task Manager & Evolution ⚡🚀
 
-**V6.2.6 联邦智能专用 - 任务管理与自我进化系统**
+**V6.2.7 联邦智能专用 - 任务管理与自我进化系统**
 
 ---
 
@@ -303,6 +303,7 @@ task-manager-evolution/
 
 | 版本 | 日期 | 关键变更 |
 |------|------|---------|
+| V6.2.7 | 2026-03-08 | **数据一致性修复** - 自动同步校准 (progress.json/evolution.json), 验证 1021 知识点一致性，备份机制验证通过 |
 | V6.2.6 | 2026-03-07 | 智能缓存 (文件修改时间+TTL), 动态并行，自动备份，趋势分析，JSON 输出，实时监控 |
 | V6.2.4 | 2026-03-04 | 数据准确性优化，双轨计数系统，实时进度校准 |
 | V6.2.3 | 2026-03-03 | 新增 auto_sync.py 自动同步，batch_ops.py 批量操作，数据一致性保障 |
