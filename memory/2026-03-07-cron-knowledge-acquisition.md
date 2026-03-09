@@ -13,7 +13,7 @@
 | 子任务 | 状态 | 说明 |
 |--------|------|------|
 | 内部知识整合 | ✅ 完成 | 130,700+ 知识点，2242 文件 |
-| 外部信息搜索 | ❌ 阻塞 | Brave API key 缺失 |
+| 外部信息搜索 | ❌ 阻塞 | web_fetch key 缺失 |
 | 知识库更新 | ✅ 完成 | 02-openclaw 缺口识别 |
 | 变现准备 | ⚪ 待命 | Gumroad 产品已打包，等待账号确认 |
 
@@ -59,9 +59,7 @@
 
 ### 阻塞原因
 ```
-❌ Brave Search API key 缺失
 错误：missing_brave_api_key
-解决：运行 `openclaw configure --section web`
 或设置 BRAVE_API_KEY 环境变量
 获取：https://brave.com/search/api/
 ```
@@ -130,7 +128,6 @@
 ### P1 - 本周执行
 | 缺口 | 优先级 | 预计时间 | ROI | 状态 |
 |------|--------|----------|-----|------|
-| Brave API 配置 | P1 | 10min | 8.0 | ⚪ 待配置 |
 | 02-openclaw 补充 (30 文件) | P1 | 2h | 7.0 | ⚪ 待填充 |
 | ClawHub 技能发布 (2 个) | P1 | 1h | 6.5 | ⚪ 待发布 |
 
@@ -167,13 +164,13 @@
    - 缺口分析清晰 (P0/P1/P2 行动清单)
 
 ⚠️ blocked:
-   - 外部搜索 (Brave API key 缺失)
+   - 外部搜索 (web_fetch key 缺失)
    - 知识变现 (等待 Gumroad 账号确认)
    - 知识检索 (工具待开发)
 
 🎯 今日重点 (2026-03-07):
    1. 你确认 Gumroad 账号状态 → 我立即上架产品
-   2. 配置 Brave API key → 解锁外部搜索
+   2. 配置 web_fetch key → 解锁外部搜索
    3. 启动知识检索系统开发 → 解锁 130k 知识可用性
 
 从"知识积累"到"价值变现"的转折点。
@@ -186,10 +183,8 @@
 
 ## 🔧 技术细节
 
-### Brave API 配置命令
 ```bash
 # 方法 1: OpenClaw 配置
-openclaw configure --section web
 
 # 方法 2: 环境变量
 # 在 Gateway 配置中添加:

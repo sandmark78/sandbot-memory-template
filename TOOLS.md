@@ -112,13 +112,17 @@ echo "内容" > /path/to/file.md  # 含引号时容易出错
 
 ### 网络请求
 ```bash
-# ✅ 推荐：web_search (Brave API)
-web_search "query" --count 5
+# ✅ 推荐：web_fetch (直接抓取网页)
+web_fetch "https://duckduckgo.com/html/?q=搜索关键词"
+web_fetch "https://news.ycombinator.com/"
+web_fetch "https://reddit.com/r/opensource"
 
-# ✅ 推荐：web_fetch (提取网页内容)
-web_fetch "https://example.com" --maxChars 3000
+# ✅ 推荐：内部知识库搜索
+grep -r "关键词" knowledge_base/
+python3 scripts/knowledge-retriever-demo.py
 
-# ⚠️ 注意：需要 API key 的工具先检查配置
+# 🚫 禁用：web_search (Brave API 已永久禁用)
+# web_search "query" --count 5  # 不再使用
 ```
 
 ### 子 Agent 调用

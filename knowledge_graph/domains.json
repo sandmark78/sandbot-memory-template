@@ -1,0 +1,277 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-03-01T06:30:00Z",
+  "total_domains": 24,
+  "total_knowledge": 10000,
+  "domains": [
+    {
+      "id": "01-ai-agent",
+      "name": "AI Agent",
+      "knowledge_points": 1000,
+      "subdomains": [
+        {"id": "01-architecture", "name": "架构", "points": 100},
+        {"id": "02-capabilities", "name": "能力", "points": 100},
+        {"id": "03-personality", "name": "人格", "points": 100},
+        {"id": "04-ethics", "name": "伦理", "points": 100},
+        {"id": "05-evaluation", "name": "评估", "points": 100},
+        {"id": "06-learning", "name": "学习", "points": 100},
+        {"id": "07-memory", "name": "记忆", "points": 100},
+        {"id": "08-collaboration", "name": "协作", "points": 100},
+        {"id": "09-evolution", "name": "进化", "points": 100},
+        {"id": "10-advanced", "name": "高级", "points": 100}
+      ]
+    },
+    {
+      "id": "02-openclaw",
+      "name": "OpenClaw",
+      "knowledge_points": 800,
+      "subdomains": [
+        {"id": "01-introduction", "name": "介绍", "points": 100},
+        {"id": "02-gateway", "name": "Gateway", "points": 100},
+        {"id": "03-channels", "name": "Channels", "points": 100},
+        {"id": "04-skills", "name": "Skills", "points": 100},
+        {"id": "05-deployment", "name": "Deployment", "points": 100},
+        {"id": "06-memory", "name": "Memory", "points": 100},
+        {"id": "07-agents", "name": "Agents", "points": 100},
+        {"id": "08-advanced", "name": "高级", "points": 100}
+      ]
+    },
+    {
+      "id": "03-federal-system",
+      "name": "联邦智能系统",
+      "knowledge_points": 600,
+      "subdomains": [
+        {"id": "01-7-agents", "name": "7 子 Agent", "points": 120},
+        {"id": "02-collaboration", "name": "协作机制", "points": 120},
+        {"id": "03-task-allocation", "name": "任务分配", "points": 120},
+        {"id": "04-quality-control", "name": "质量控制", "points": 120},
+        {"id": "05-performance", "name": "性能优化", "points": 120}
+      ]
+    },
+    {
+      "id": "04-skill-dev",
+      "name": "技能开发",
+      "knowledge_points": 500,
+      "subdomains": [
+        {"id": "01-design", "name": "设计", "points": 100},
+        {"id": "02-coding", "name": "编码", "points": 100},
+        {"id": "03-testing", "name": "测试", "points": 100},
+        {"id": "04-publish", "name": "发布", "points": 100},
+        {"id": "05-maintenance", "name": "维护", "points": 100}
+      ]
+    },
+    {
+      "id": "05-memory-system",
+      "name": "记忆系统",
+      "knowledge_points": 400,
+      "subdomains": [
+        {"id": "01-structure", "name": "结构", "points": 100},
+        {"id": "02-storage", "name": "存储", "points": 100},
+        {"id": "03-retrieval", "name": "检索", "points": 100},
+        {"id": "04-compression", "name": "压缩", "points": 100}
+      ]
+    },
+    {
+      "id": "06-growth-system",
+      "name": "成长系统",
+      "knowledge_points": 400,
+      "subdomains": [
+        {"id": "01-self-assessment", "name": "自我评估", "points": 80},
+        {"id": "02-learning-loop", "name": "学习循环", "points": 80},
+        {"id": "03-capability-tracking", "name": "能力追踪", "points": 80},
+        {"id": "04-evolution-path", "name": "进化路径", "points": 80},
+        {"id": "05-milestone", "name": "里程碑", "points": 80}
+      ]
+    },
+    {
+      "id": "07-community",
+      "name": "社区运营",
+      "knowledge_points": 500,
+      "subdomains": [
+        {"id": "01-moltbook", "name": "Moltbook", "points": 100},
+        {"id": "02-clawhub", "name": "ClawHub", "points": 100},
+        {"id": "03-github", "name": "GitHub", "points": 100},
+        {"id": "04-engagement", "name": "互动参与", "points": 100},
+        {"id": "05-reputation", "name": "声誉建设", "points": 100}
+      ]
+    },
+    {
+      "id": "08-monetization",
+      "name": "变现模式",
+      "knowledge_points": 500,
+      "subdomains": [
+        {"id": "01-gumroad", "name": "Gumroad", "points": 100},
+        {"id": "02-services", "name": "B2B 服务", "points": 100},
+        {"id": "03-subscription", "name": "订阅模式", "points": 100},
+        {"id": "04-sponsorship", "name": "赞助捐赠", "points": 100},
+        {"id": "05-analytics", "name": "收益分析", "points": 100}
+      ]
+    },
+    {
+      "id": "09-security",
+      "name": "安全协议",
+      "knowledge_points": 400,
+      "subdomains": [
+        {"id": "01-input-validation", "name": "输入验证", "points": 80},
+        {"id": "02-access-control", "name": "访问控制", "points": 80},
+        {"id": "03-privacy", "name": "隐私保护", "points": 80},
+        {"id": "04-threat-detection", "name": "威胁检测", "points": 80},
+        {"id": "05-response", "name": "安全响应", "points": 80}
+      ]
+    },
+    {
+      "id": "10-automation",
+      "name": "自动化",
+      "knowledge_points": 500,
+      "subdomains": [
+        {"id": "01-cron-jobs", "name": "Cron 任务", "points": 100},
+        {"id": "02-workflows", "name": "工作流", "points": 100},
+        {"id": "03-triggers", "name": "触发器", "points": 100},
+        {"id": "04-integrations", "name": "集成", "points": 100},
+        {"id": "05-monitoring", "name": "监控", "points": 100}
+      ]
+    },
+    {
+      "id": "11-content",
+      "name": "内容创作",
+      "knowledge_points": 400,
+      "subdomains": [
+        {"id": "01-writing", "name": "写作", "points": 100},
+        {"id": "02-visual", "name": "视觉设计", "points": 100},
+        {"id": "03-video", "name": "视频制作", "points": 100},
+        {"id": "04-seo", "name": "SEO 优化", "points": 100}
+      ]
+    },
+    {
+      "id": "12-tools",
+      "name": "工具",
+      "knowledge_points": 400,
+      "subdomains": [
+        {"id": "01-development", "name": "开发工具", "points": 100},
+        {"id": "02-testing", "name": "测试工具", "points": 100},
+        {"id": "03-deployment", "name": "部署工具", "points": 100},
+        {"id": "04-monitoring", "name": "监控工具", "points": 100}
+      ]
+    },
+    {
+      "id": "13-blockchain",
+      "name": "区块链",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-applications", "name": "应用", "points": 100},
+        {"id": "03-development", "name": "开发", "points": 100}
+      ]
+    },
+    {
+      "id": "14-iot",
+      "name": "物联网",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-applications", "name": "应用", "points": 100},
+        {"id": "03-development", "name": "开发", "points": 100}
+      ]
+    },
+    {
+      "id": "15-cloud",
+      "name": "云计算",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-applications", "name": "应用", "points": 100},
+        {"id": "03-development", "name": "开发", "points": 100}
+      ]
+    },
+    {
+      "id": "16-devops",
+      "name": "DevOps",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-tools", "name": "工具", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "17-ml",
+      "name": "机器学习",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-algorithms", "name": "算法", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "18-nlp",
+      "name": "自然语言处理",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-techniques", "name": "技术", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "19-cv",
+      "name": "计算机视觉",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-techniques", "name": "技术", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "20-robotics",
+      "name": "机器人学",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-techniques", "name": "技术", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "21-edge",
+      "name": "边缘计算",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-techniques", "name": "技术", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "22-quantum",
+      "name": "量子计算",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-techniques", "name": "技术", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "23-bio",
+      "name": "生物技术",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-techniques", "name": "技术", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    },
+    {
+      "id": "24-finance",
+      "name": "金融科技",
+      "knowledge_points": 300,
+      "subdomains": [
+        {"id": "01-basics", "name": "基础", "points": 100},
+        {"id": "02-techniques", "name": "技术", "points": 100},
+        {"id": "03-practices", "name": "实践", "points": 100}
+      ]
+    }
+  ]
+}

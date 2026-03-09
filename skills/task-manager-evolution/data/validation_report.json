@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-03-08T06:02:27.097345",
+  "issues_count": 0,
+  "warnings_count": 0,
+  "actual_knowledge_points": 1021,
+  "progress_recorded": 1021,
+  "evolution_recorded": 1021,
+  "tasks_total": 3,
+  "tasks_completed": 1,
+  "completion_rate": 33.33,
+  "issues": [],
+  "warnings": [],
+  "performance": {
+    "elapsed_seconds": 0.02,
+    "files_checked": 18,
+    "domains_scanned": 12
+  }
+}

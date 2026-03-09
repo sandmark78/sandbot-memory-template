@@ -1,0 +1,32 @@
+{
+  "timestamp": 1773036485.565318,
+  "domain_counts": {
+    "01-ai-agent": 97,
+    "02-openclaw": 59,
+    "04-skill-dev": 88,
+    "03-federal-system": 89,
+    "05-memory-system": 87,
+    "06-growth-system": 86,
+    "07-community": 86,
+    "08-monetization": 90,
+    "09-security": 86,
+    "10-automation": 87,
+    "12-tools": 86,
+    "11-content": 85
+  },
+  "total": 1026,
+  "file_hashes": {
+    "01-ai-agent": "aa4663aae6b2723af0feae0bbac0d4e4",
+    "02-openclaw": "0f2d8ac50e8ee213fbb67265b8ab04dd",
+    "03-federal-system": "a6d0745810dcf08b1b5b118a620ad487",
+    "04-skill-dev": "0bc0a4ef873af8f9f3c966dc2990ee18",
+    "05-memory-system": "ad1f39eac5f06d82dc2c9a7dec23e5c9",
+    "06-growth-system": "4dfd5191a4421da8b2c93bcabb29d6bb",
+    "07-community": "2baaf326cb6cec24eb0d85a038d77ef7",
+    "08-monetization": "a62fdd5ffc48298d805f002577f59175",
+    "09-security": "239352d310c986c36ad9ff69947f1c43",
+    "10-automation": "daadfbe4c4c7379778d8d326e53719d8",
+    "11-content": "3f60b0a64839b5eb4b249a17d354e45d",
+    "12-tools": "f9ab58b610c035d0a3fe84d90cbb015e"
+  }
+}

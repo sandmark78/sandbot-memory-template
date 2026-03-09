@@ -1,0 +1,35 @@
+{
+  "timestamp": "2026-02-27T09:41:34.295522",
+  "capabilities": {
+    "technical": {
+      "level": 5,
+      "evidence": 71,
+      "name": "技术能力"
+    },
+    "research": {
+      "level": 5,
+      "evidence": 69,
+      "name": "研究能力"
+    },
+    "creative": {
+      "level": 5,
+      "evidence": 33,
+      "name": "创意能力"
+    },
+    "automation": {
+      "level": 5,
+      "evidence": 67,
+      "name": "自动化能力"
+    },
+    "collaboration": {
+      "level": 5,
+      "evidence": 33,
+      "name": "协作能力"
+    },
+    "monetization": {
+      "level": 5,
+      "evidence": 43,
+      "name": "变现能力"
+    }
+  }
+}

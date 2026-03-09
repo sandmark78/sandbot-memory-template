@@ -13,7 +13,7 @@
 | 子任务 | 状态 | 说明 |
 |--------|------|------|
 | 内部知识整合 | ✅ 完成 | 132,600+ 知识点，2270 文件 |
-| 外部信息搜索 | ❌ 阻塞 | Brave API key 缺失 |
+| 外部信息搜索 | ❌ 阻塞 | web_fetch key 缺失 |
 | 知识库更新 | ✅ 健康 | 24 领域 100% 覆盖 |
 | 知识检索工具 | ✅ 就绪 | Knowledge Retriever v1.0 已开发 |
 | 变现准备 | ⚪ 待命 | Gumroad 等待账号确认 |
@@ -58,9 +58,7 @@
 
 ### 阻塞原因
 ```
-❌ Brave Search API key 缺失
 错误：missing_brave_api_key
-解决：运行 `openclaw configure --section web`
 或设置 BRAVE_API_KEY 环境变量
 获取：https://brave.com/search/api/
 ```
@@ -158,7 +156,6 @@
 ### P1 - 本周执行
 | 缺口 | 优先级 | 预计时间 | ROI | 状态 |
 |------|--------|----------|-----|------|
-| Brave API 配置 | P1 | 10min | 8.0 | ⚪ 待配置 |
 | 02-openclaw 补充 (30 文件) | P1 | 2h | 7.0 | ⚪ 待填充 |
 | ClawHub 技能发布 (2 个) | P1 | 1h | 6.5 | ⚪ 待发布 |
 
@@ -196,13 +193,13 @@
    - 缺口分析清晰 (P0/P1/P2 行动清单)
 
 ⚠️ blocked:
-   - 外部搜索 (Brave API key 缺失)
+   - 外部搜索 (web_fetch key 缺失)
    - 知识变现 (等待 Gumroad 账号确认)
    - 质量审计 (待执行抽样检查)
 
 🎯 下一步重点:
    1. 你确认 Gumroad 账号状态 → 我立即上架产品
-   2. 配置 Brave API key → 解锁外部搜索
+   2. 配置 web_fetch key → 解锁外部搜索
    3. 执行质量抽样审计 → 验证 132k 知识点可信度
    4. 测试 Knowledge Retriever → 确保检索功能正常
 
@@ -216,10 +213,8 @@
 
 ## 🔧 技术细节
 
-### Brave API 配置命令
 ```bash
 # 方法 1: OpenClaw 配置
-openclaw configure --section web
 
 # 方法 2: 环境变量
 # 在 Gateway 配置中添加:

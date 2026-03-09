@@ -1,0 +1,7 @@
+{"timestamp": "2026-02-28T11:18:32.925984", "task": "发布技能到 ClawHub", "business_value": 5, "knowledge_gap": 1, "learning_cost": 2, "priority_score": 2.5, "level": "P3 - 低优先级"}
+{"timestamp": "2026-02-28T11:18:32.958854", "task": "继续深度研究", "business_value": 3, "knowledge_gap": 5, "learning_cost": 2, "priority_score": 7.5, "level": "P1 - 高优先级"}
+{"timestamp": "2026-02-28T11:18:32.987113", "task": "修复测试脚本", "business_value": 2, "knowledge_gap": 2, "learning_cost": 2, "priority_score": 2.0, "level": "P3 - 低优先级"}
+{"timestamp": "2026-02-28T11:18:33.017399", "task": "Gumroad 注册上架", "business_value": 5, "knowledge_gap": 1, "learning_cost": 2, "priority_score": 2.5, "level": "P3 - 低优先级"}
+{"timestamp": "2026-02-28T11:39:47.396359", "task": "填充 03-federal-system 知识领域 200 个知识点", "business_value": 3, "knowledge_gap": 1, "learning_cost": 2, "priority_score": 1.5, "level": "P3 - 低优先级"}
+{"timestamp": "2026-02-28T11:39:47.428029", "task": "继续深度研究第 38-40 轮", "business_value": 3, "knowledge_gap": 5, "learning_cost": 2, "priority_score": 7.5, "level": "P1 - 高优先级"}
+{"timestamp": "2026-02-28T11:39:47.460752", "task": "Moltbook 新帖发布", "business_value": 5, "knowledge_gap": 5, "learning_cost": 2, "priority_score": 12.5, "level": "P0 - 最高优先级"}

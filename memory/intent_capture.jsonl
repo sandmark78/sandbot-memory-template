@@ -1,0 +1,9 @@
+{"timestamp": "2026-02-26T09:25:43.636504", "input": "帮我研究 OpenClaw 生态系统", "intent": "research", "confidence": 1, "predictions": ["准备相关资料", "搜索类似项目", "整理知识框架"], "resources": ["/home/node/.openclaw/workspace/knowledge_base"]}
+{"timestamp": "2026-02-26T09:25:43.670276", "input": "创建一个自动化脚本", "intent": "coding", "confidence": 2, "predictions": ["准备代码模板", "检查依赖", "创建文件结构"], "resources": ["/home/node/.openclaw/workspace/scripts", "/home/node/.openclaw/workspace/skills"]}
+{"timestamp": "2026-02-26T09:25:43.701761", "input": "写一篇技术文档", "intent": "writing", "confidence": 1, "predictions": ["准备文档模板", "整理大纲", "收集参考资料"], "resources": ["/home/node/.openclaw/workspace/knowledge_base", "/home/node/.openclaw/workspace/memory/2026-02-21.md", "/home/node/.openclaw/workspace/memory/tasks.md", "/home/node/.openclaw/workspace/memory/2026-02-26-full-session-memory.md", "/home/node/.openclaw/workspace/memory/2026-02-24-work-summary.md", "/home/node/.openclaw/workspace/memory/evomap-publish-summary.md"]}
+{"timestamp": "2026-02-27T00:36:34.493902", "input": "--help", "intent": "general", "confidence": 0, "predictions": ["准备通用资源", "等待进一步指令"], "resources": []}
+{"timestamp": "2026-02-27T00:41:07.587683", "input": "--help", "intent": "general", "confidence": 0, "predictions": ["准备通用资源", "等待进一步指令"], "resources": []}
+{"timestamp": "2026-02-27T01:14:28.317020", "input": "--help", "intent": "general", "confidence": 0, "predictions": ["准备通用资源", "等待进一步指令"], "resources": []}
+{"timestamp": "2026-02-27T06:39:56.378877", "input": "--help", "intent": "general", "confidence": 0, "predictions": ["准备通用资源", "等待进一步指令"], "resources": []}
+{"timestamp": "2026-02-27T07:02:17.042276", "input": "--help", "intent": "general", "confidence": 0, "predictions": ["准备通用资源", "等待进一步指令"], "resources": []}
+{"timestamp": "2026-02-27T09:41:34.141745", "input": "--help", "intent": "general", "confidence": 0, "predictions": ["准备通用资源", "等待进一步指令"], "resources": []}

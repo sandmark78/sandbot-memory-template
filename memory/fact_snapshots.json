@@ -1,0 +1,187 @@
+{
+  "anchors": {
+    "timestamp": "2026-02-27T10:22:27.164911",
+    "facts": {
+      "scripts": "21 个",
+      "files": "200+ 个"
+    },
+    "task_count": 0,
+    "batches": []
+  },
+  "batches": [
+    {
+      "batch_num": 1,
+      "tasks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "status": "completed",
+      "snapshot": {
+        "batch_num": 1,
+        "timestamp": "2026-02-27T10:22:27.665036",
+        "tasks_completed": 10,
+        "new_facts": {
+          "batch_status": "completed",
+          "conflicts": []
+        }
+      }
+    },
+    {
+      "batch_num": 2,
+      "tasks": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "status": "completed",
+      "snapshot": {
+        "batch_num": 2,
+        "timestamp": "2026-02-27T10:22:28.165166",
+        "tasks_completed": 10,
+        "new_facts": {
+          "batch_status": "completed",
+          "conflicts": []
+        }
+      }
+    },
+    {
+      "batch_num": 3,
+      "tasks": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "status": "completed",
+      "snapshot": {
+        "batch_num": 3,
+        "timestamp": "2026-02-27T10:22:28.665300",
+        "tasks_completed": 10,
+        "new_facts": {
+          "batch_status": "completed",
+          "conflicts": []
+        }
+      }
+    },
+    {
+      "batch_num": 4,
+      "tasks": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "status": "completed",
+      "snapshot": {
+        "batch_num": 4,
+        "timestamp": "2026-02-27T10:22:29.165445",
+        "tasks_completed": 10,
+        "new_facts": {
+          "batch_status": "completed",
+          "conflicts": []
+        }
+      }
+    },
+    {
+      "batch_num": 5,
+      "tasks": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "status": "completed",
+      "snapshot": {
+        "batch_num": 5,
+        "timestamp": "2026-02-27T10:22:29.665564",
+        "tasks_completed": 10,
+        "new_facts": {
+          "batch_status": "completed",
+          "conflicts": []
+        }
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "batch_num": 1,
+      "timestamp": "2026-02-27T10:22:27.665036",
+      "tasks_completed": 10,
+      "new_facts": {
+        "batch_status": "completed",
+        "conflicts": []
+      }
+    },
+    {
+      "batch_num": 2,
+      "timestamp": "2026-02-27T10:22:28.165166",
+      "tasks_completed": 10,
+      "new_facts": {
+        "batch_status": "completed",
+        "conflicts": []
+      }
+    },
+    {
+      "batch_num": 3,
+      "timestamp": "2026-02-27T10:22:28.665300",
+      "tasks_completed": 10,
+      "new_facts": {
+        "batch_status": "completed",
+        "conflicts": []
+      }
+    },
+    {
+      "batch_num": 4,
+      "timestamp": "2026-02-27T10:22:29.165445",
+      "tasks_completed": 10,
+      "new_facts": {
+        "batch_status": "completed",
+        "conflicts": []
+      }
+    },
+    {
+      "batch_num": 5,
+      "timestamp": "2026-02-27T10:22:29.665564",
+      "tasks_completed": 10,
+      "new_facts": {
+        "batch_status": "completed",
+        "conflicts": []
+      }
+    }
+  ],
+  "conflicts": [],
+  "timestamp": "2026-02-27T10:22:29.665623"
+}

@@ -14,7 +14,7 @@
 ✅ 知识填充超额完成 - 130,700+ 知识点 (原目标 6,400，超额 20x)
 ✅ 技能库规模可观 - 44 个技能 (原目标 20 个，超额 2.2x)
 ⚠️ 变现进展滞后 - 首笔收益 $0 (Gumroad 店铺就绪，产品未上架)
-⚠️ API 配置缺失 - Brave Search + Reddit Insights 连续 11 次未配置
+⚠️ API 配置缺失 - web_fetch + Reddit Insights 连续 11 次未配置
 ⚠️ 脚本优化空间 - 核心脚本 2000+ 行，模块化不足
 ```
 
@@ -334,7 +334,6 @@ ROI: 7.0 (团队优化)
 
 | 任务 | 负责 Agent | 预计耗时 | 状态 |
 |------|-----------|---------|------|
-| 配置 Brave Search API | DevOpsBot | 10 分钟 | ⏳ 待执行 |
 | 配置 Reddit Insights API | DevOpsBot | 10 分钟 | ⏳ 待执行 |
 | 发布 ClawHub 技能 (scrapling) | TechBot | 15 分钟 | ⏳ 待执行 |
 | 发布 ClawHub 技能 (knowledge-filler) | TechBot | 15 分钟 | ⏳ 待执行 |

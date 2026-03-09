@@ -1,0 +1,2 @@
+{"type": "assignment", "task": "编写 OpenClaw 技能开发教程", "assigned_to": "techbot", "score": 2, "timestamp": "2026-02-26T07:20:38.114210"}
+{"type": "orchestration", "task": "开发 V6.1 完整教程系列并变现", "workflow": [{"agent": "researchbot", "task": "市场调研和竞品分析"}, {"agent": "techbot", "task": "技术教程内容编写"}, {"agent": "creativebot", "task": "营销文案优化"}, {"agent": "auditor", "task": "质量审查"}, {"agent": "devopsbot", "task": "部署和发布"}], "timestamp": "2026-02-26T07:20:38.145802"}

@@ -50,7 +50,6 @@
 | Gumroad 首个产品上架 | 10.0 | 03-07 | ⚪ |
 | ClawHub 技能发布 (2 个) | 8.0 | 03-07 | ⚪ |
 | Reddit 帖子发布 (3 个) | 8.5 | 03-07 | ⚪ |
-| Brave Search API 配置 | 9.5 | 03-07 | ⚪ |
 
 ### P1 优先级 (本周)
 | 任务 | ROI | 截止 | 状态 |
@@ -80,13 +79,12 @@
 1. **变现突破** - Gumroad 首个产品上架 (ROI 10.0)
 2. **技能发布** - ClawHub 2 个技能发布 (ROI 8.0)
 3. **社区推广** - Reddit 3 个帖子发布 (ROI 8.5)
-4. **API 配置** - Brave Search 启用 (ROI 9.5)
+4. **API 配置** - web_fetch 启用 (ROI 9.5)
 
 ### 成功标准
 - ✅ Gumroad 店铺有至少 1 个产品上架
 - ✅ ClawHub 技能库显示 5 个已发布技能
 - ✅ Reddit 3 个帖子成功发布并获得互动
-- ✅ Brave Search API 可正常调用
 
 ---
 
@@ -159,7 +157,6 @@ Created:
 1. ⚪ Gumroad 产品上架准备
 2. ⚪ ClawHub 技能发布 (scrapling + knowledge-filler)
 3. ⚪ Reddit 帖子发布 (3 个主题)
-4. ⚪ Brave Search API 配置
 
 ### 本周执行 (03-07 ~ 03-10)
 1. ⚪ 知识检索系统开发

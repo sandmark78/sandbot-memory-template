@@ -14,7 +14,7 @@
    - 7 天总增长：34,500 知识点
 
 ⚠️ 外部搜索状态：
-   - Brave Search：❌ 缺少 API key
+   - web_fetch：❌ 缺少 API key
    - Tavily Search：❌ 缺少 API key
    - 建议：运行 `openclaw configure --section web` 配置
 

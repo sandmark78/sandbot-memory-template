@@ -1,0 +1,44 @@
+[
+  {
+    "id": "TASK-20260301061300",
+    "name": "填充 01-ai-agent 领域至 200 知识点",
+    "business_value": 5,
+    "knowledge_gap": 5,
+    "learning_cost": 2,
+    "priority_score": 12.5,
+    "priority_level": "P0 - 立即执行",
+    "status": "in_progress",
+    "created_at": "2026-03-01T06:13:00",
+    "completed_at": null,
+    "target_points": 200,
+    "current_points": 100
+  },
+  {
+    "id": "TASK-20260301061301",
+    "name": "填充 02-openclaw 领域至 100 知识点",
+    "business_value": 5,
+    "knowledge_gap": 5,
+    "learning_cost": 1,
+    "priority_score": 25.0,
+    "priority_level": "P0 - 立即执行",
+    "status": "pending",
+    "created_at": "2026-03-01T06:13:01",
+    "completed_at": null,
+    "target_points": 100,
+    "current_points": 10
+  },
+  {
+    "id": "TASK-20260301061302",
+    "name": "优化 progress_tracker.py 支持 JSON 输出",
+    "business_value": 3,
+    "knowledge_gap": 3,
+    "learning_cost": 2,
+    "priority_score": 4.5,
+    "priority_level": "P2 - 中优先级",
+    "status": "completed",
+    "created_at": "2026-03-01T06:13:02",
+    "completed_at": "2026-03-01T06:13:30",
+    "target_points": null,
+    "current_points": null
+  }
+]

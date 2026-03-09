@@ -1,0 +1,121 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-03-01T07:45:00Z",
+  "search_engine": {
+    "type": "hybrid",
+    "methods": [
+      {
+        "id": "keyword",
+        "name": "关键词检索",
+        "description": "基于关键词的全文检索",
+        "speed": "快",
+        "accuracy": "中"
+      },
+      {
+        "id": "tag",
+        "name": "标签检索",
+        "description": "基于标签的分类检索",
+        "speed": "快",
+        "accuracy": "高"
+      },
+      {
+        "id": "domain",
+        "name": "领域检索",
+        "description": "基于领域的分类检索",
+        "speed": "快",
+        "accuracy": "高"
+      },
+      {
+        "id": "related",
+        "name": "关联检索",
+        "description": "基于知识关联的检索",
+        "speed": "中",
+        "accuracy": "高"
+      },
+      {
+        "id": "path",
+        "name": "路径检索",
+        "description": "基于学习路径的检索",
+        "speed": "中",
+        "accuracy": "高"
+      },
+      {
+        "id": "smart",
+        "name": "智能推荐",
+        "description": "基于用户行为的智能推荐",
+        "speed": "中",
+        "accuracy": "高"
+      }
+    ],
+    "features": {
+      "full_text_search": true,
+      "tag_search": true,
+      "domain_filter": true,
+      "difficulty_filter": true,
+      "related_search": true,
+      "path_recommendation": true,
+      "smart_recommendation": true
+    },
+    "performance": {
+      "avg_response_time": "<100ms",
+      "concurrent_users": 1000,
+      "knowledge_points": 10000
+    }
+  },
+  "indexes": {
+    "keyword_index": {
+      "type": "inverted_index",
+      "fields": ["title", "content", "tags"],
+      "size": "~10MB"
+    },
+    "tag_index": {
+      "type": "btree",
+      "fields": ["tags"],
+      "size": "~1MB"
+    },
+    "domain_index": {
+      "type": "btree",
+      "fields": ["domain", "subdomain"],
+      "size": "~500KB"
+    },
+    "relationship_index": {
+      "type": "graph",
+      "fields": ["prerequisites", "related"],
+      "size": "~2MB"
+    }
+  },
+  "api": {
+    "endpoints": [
+      {
+        "path": "/api/search",
+        "method": "GET",
+        "description": "搜索知识点",
+        "parameters": ["query", "domain", "difficulty", "tags"]
+      },
+      {
+        "path": "/api/knowledge/{id}",
+        "method": "GET",
+        "description": "获取知识点详情",
+        "parameters": ["id"]
+      },
+      {
+        "path": "/api/paths",
+        "method": "GET",
+        "description": "获取学习路径列表",
+        "parameters": ["domain", "difficulty"]
+      },
+      {
+        "path": "/api/paths/{id}",
+        "method": "GET",
+        "description": "获取学习路径详情",
+        "parameters": ["id"]
+      },
+      {
+        "path": "/api/recommend",
+        "method": "GET",
+        "description": "智能推荐",
+        "parameters": ["user_id", "limit"]
+      }
+    ]
+  }
+}

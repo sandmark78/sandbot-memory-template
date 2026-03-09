@@ -1,0 +1,95 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-03-01T07:45:00Z",
+  "learning_paths": [
+    {
+      "id": "path-001",
+      "name": "AI Agent 入门路径",
+      "description": "从零开始学习 AI Agent",
+      "difficulty": "入门",
+      "estimated_time": "10 小时",
+      "prerequisites": [],
+      "steps": [
+        {"id": "A01-0001", "title": "AI Agent 定义", "order": 1},
+        {"id": "A01-0002", "title": "AI Agent 特点", "order": 2},
+        {"id": "A01-0003", "title": "AI Agent 类型", "order": 3},
+        {"id": "A01-0004", "title": "AI Agent 架构", "order": 4},
+        {"id": "A01-0005", "title": "AI Agent 能力", "order": 5}
+      ],
+      "outcomes": ["理解 AI Agent 基础", "掌握 Agent 架构", "能够设计简单 Agent"]
+    },
+    {
+      "id": "path-002",
+      "name": "OpenClaw 基础路径",
+      "description": "学习 OpenClaw 框架基础",
+      "difficulty": "入门",
+      "estimated_time": "8 小时",
+      "prerequisites": ["path-001"],
+      "steps": [
+        {"id": "A02-0001", "title": "OpenClaw 定义", "order": 1},
+        {"id": "A02-0002", "title": "OpenClaw 架构", "order": 2},
+        {"id": "A02-0003", "title": "OpenClaw 安装", "order": 3},
+        {"id": "A02-0004", "title": "OpenClaw 配置", "order": 4},
+        {"id": "A02-0005", "title": "OpenClaw 技能", "order": 5}
+      ],
+      "outcomes": ["理解 OpenClaw 基础", "能够安装配置", "能够开发简单技能"]
+    },
+    {
+      "id": "path-003",
+      "name": "联邦智能系统路径",
+      "description": "学习 7 子 Agent 联邦系统",
+      "difficulty": "中级",
+      "estimated_time": "15 小时",
+      "prerequisites": ["path-002"],
+      "steps": [
+        {"id": "A03-0001", "title": "7 子 Agent 定义", "order": 1},
+        {"id": "A03-0002", "title": "TechBot 职责", "order": 2},
+        {"id": "A03-0003", "title": "FinanceBot 职责", "order": 3},
+        {"id": "A03-0004", "title": "CreativeBot 职责", "order": 4},
+        {"id": "A03-0005", "title": "协作机制", "order": 5}
+      ],
+      "outcomes": ["理解联邦系统", "掌握 7 子 Agent 职责", "能够设计协作系统"]
+    },
+    {
+      "id": "path-004",
+      "name": "技能开发路径",
+      "description": "学习 OpenClaw 技能开发",
+      "difficulty": "中级",
+      "estimated_time": "20 小时",
+      "prerequisites": ["path-002"],
+      "steps": [
+        {"id": "A04-0001", "title": "技能设计", "order": 1},
+        {"id": "A04-0002", "title": "技能编码", "order": 2},
+        {"id": "A04-0003", "title": "技能测试", "order": 3},
+        {"id": "A04-0004", "title": "技能发布", "order": 4},
+        {"id": "A04-0005", "title": "技能维护", "order": 5}
+      ],
+      "outcomes": ["理解技能开发流程", "能够开发技能", "能够发布技能"]
+    },
+    {
+      "id": "path-005",
+      "name": "知识管理路径",
+      "description": "学习知识管理系统",
+      "difficulty": "中级",
+      "estimated_time": "12 小时",
+      "prerequisites": ["path-002"],
+      "steps": [
+        {"id": "A05-0001", "title": "记忆系统结构", "order": 1},
+        {"id": "A05-0002", "title": "记忆存储", "order": 2},
+        {"id": "A05-0003", "title": "记忆检索", "order": 3},
+        {"id": "A05-0004", "title": "记忆压缩", "order": 4},
+        {"id": "A05-0005", "title": "知识图谱", "order": 5}
+      ],
+      "outcomes": ["理解记忆系统", "掌握知识管理", "能够设计知识系统"]
+    }
+  ],
+  "statistics": {
+    "total_paths": 24,
+    "by_difficulty": {
+      "入门": 12,
+      "中级": 8,
+      "高级": 4
+    },
+    "total_estimated_time": "300 小时"
+  }
+}

@@ -159,7 +159,6 @@
 ### P1 - 下周完成 (ROI > 5.0)
 | 技能 | 用途 | 优先级评分 | 预计时间 |
 |------|------|-----------|----------|
-| brave-search-wrapper | Brave Search API 封装 | 8.5 | 2 小时 |
 | reddit-insights-auto | Reddit 自动调研 | 8.0 | 3 小时 |
 | content-generator | 内容批量生成 | 7.5 | 4 小时 |
 
@@ -180,7 +179,6 @@
 2. ⚪ knowledge-retriever 技能开发 (3-4 小时)
 3. ⚪ knowledge-auditor 技能开发 (2-3 小时)
 4. ⚪ Gumroad 产品上架 (4-5 小时)
-5. ⚪ Brave API 配置 (openclaw configure --section web)
 ```
 
 ### 本周完成 (P1)
@@ -219,7 +217,6 @@
 🔴 变现瓶颈：132k 知识点零变现，ROI=0
 🔴 检索缺失：知识可用性仅 60%
 🔴 质量未知：未进行系统审计
-🟡 工具缺口：Brave API 未配置
 🟡 子 Agent 利用率低
 ```
 
@@ -251,13 +248,11 @@
 - 零变现 (ROI=0，急需 Gumroad 上架)
 - 132k 点无法检索 (缺 knowledge-retriever)
 - 质量未知 (缺 knowledge-auditor)
-- Brave API 未配置 (web_search 用不了)
 
 今天核心任务：
 1. knowledge-retriever 开发 (让 132k 点可用)
 2. knowledge-auditor 开发 (质量可信度 50%→85%)
 3. Gumroad 产品上架 (第一笔收益！)
-4. Brave API 配置 (恢复外部搜索)
 
 就像：
 - 建了超级图书馆 ✅

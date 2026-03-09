@@ -1,0 +1,40 @@
+{
+  "pending": [
+    {
+      "item": "应该增加测试覆盖",
+      "added_at": "2026-02-26T07:25:40.206775",
+      "priority": "normal"
+    },
+    {
+      "item": "需要启用官方 Cron API",
+      "added_at": "2026-02-26T07:37:53.723538",
+      "priority": "normal"
+    },
+    {
+      "item": "需要启用 Memory Flush",
+      "added_at": "2026-02-26T07:37:53.723735",
+      "priority": "normal"
+    },
+    {
+      "item": "需要等待网络恢复",
+      "added_at": "2026-02-26T07:49:07.521611",
+      "priority": "normal"
+    },
+    {
+      "item": "需要优化记忆结构",
+      "added_at": "2026-02-26T07:53:39.795459",
+      "priority": "normal"
+    },
+    {
+      "item": "需要添加主动意图捕捉",
+      "added_at": "2026-02-26T07:53:39.795651",
+      "priority": "normal"
+    },
+    {
+      "item": "需要社区贡献和技术吸收",
+      "added_at": "2026-02-26T07:57:08.813388",
+      "priority": "normal"
+    }
+  ],
+  "completed": []
+}

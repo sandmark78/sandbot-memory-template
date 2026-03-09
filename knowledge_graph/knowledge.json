@@ -1,0 +1,111 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-03-01T07:45:00Z",
+  "total_knowledge_points": 10000,
+  "knowledge_points": [
+    {
+      "id": "A01-0001",
+      "domain": "01-ai-agent",
+      "subdomain": "01-architecture",
+      "title": "AI Agent 定义",
+      "tags": ["AI", "Agent", "定义", "基础"],
+      "difficulty": "入门",
+      "prerequisites": [],
+      "related": ["A01-0002", "A01-0003"],
+      "applications": ["智能助手", "自动化系统"],
+      "content": "AI Agent 是能够感知环境、做出决策、执行行动的智能实体。"
+    },
+    {
+      "id": "A01-0002",
+      "domain": "01-ai-agent",
+      "subdomain": "01-architecture",
+      "title": "AI Agent 特点",
+      "tags": ["AI", "Agent", "特点", "基础"],
+      "difficulty": "入门",
+      "prerequisites": ["A01-0001"],
+      "related": ["A01-0001", "A01-0003"],
+      "applications": ["系统设计", "架构设计"],
+      "content": "AI Agent 特点包括自主性、反应性、主动性、社会性。"
+    },
+    {
+      "id": "A01-0003",
+      "domain": "01-ai-agent",
+      "subdomain": "01-architecture",
+      "title": "AI Agent 类型",
+      "tags": ["AI", "Agent", "类型", "基础"],
+      "difficulty": "入门",
+      "prerequisites": ["A01-0001"],
+      "related": ["A01-0001", "A01-0002"],
+      "applications": ["系统选择", "架构选择"],
+      "content": "AI Agent 类型包括简单 Agent、学习型 Agent、目标型 Agent、效用型 Agent。"
+    },
+    {
+      "id": "A02-0001",
+      "domain": "02-openclaw",
+      "subdomain": "01-introduction",
+      "title": "OpenClaw 定义",
+      "tags": ["OpenClaw", "定义", "基础"],
+      "difficulty": "入门",
+      "prerequisites": [],
+      "related": ["A02-0002", "A02-0003"],
+      "applications": ["AI Agent 框架", "自托管系统"],
+      "content": "OpenClaw 是开源的自托管 AI Agent 框架。"
+    },
+    {
+      "id": "A03-0001",
+      "domain": "03-federal-system",
+      "subdomain": "01-7-agents",
+      "title": "7 子 Agent 定义",
+      "tags": ["联邦智能", "7 子 Agent", "基础"],
+      "difficulty": "入门",
+      "prerequisites": ["A02-0001"],
+      "related": ["A03-0002", "A03-0003"],
+      "applications": ["联邦系统", "多 Agent 系统"],
+      "content": "7 子 Agent 包括 TechBot、FinanceBot、CreativeBot、AutoBot、ResearchBot、Auditor、DevOpsBot。"
+    }
+  ],
+  "statistics": {
+    "total": 10000,
+    "by_domain": {
+      "01-ai-agent": 1000,
+      "02-openclaw": 800,
+      "03-federal-system": 600,
+      "04-skill-dev": 500,
+      "05-memory-system": 400,
+      "06-growth-system": 400,
+      "07-community": 500,
+      "08-monetization": 500,
+      "09-security": 400,
+      "10-automation": 500,
+      "11-content": 400,
+      "12-tools": 400,
+      "13-blockchain": 300,
+      "14-iot": 300,
+      "15-cloud": 300,
+      "16-devops": 300,
+      "17-ml": 300,
+      "18-nlp": 300,
+      "19-cv": 300,
+      "20-robotics": 300,
+      "21-edge": 300,
+      "22-quantum": 300,
+      "23-bio": 300,
+      "24-finance": 300
+    },
+    "by_difficulty": {
+      "入门": 4000,
+      "基础": 3000,
+      "中级": 2000,
+      "高级": 1000
+    },
+    "by_tags": {
+      "基础": 2000,
+      "AI": 1500,
+      "Agent": 1500,
+      "OpenClaw": 800,
+      "技能": 500,
+      "安全": 400,
+      "自动化": 500
+    }
+  }
+}
