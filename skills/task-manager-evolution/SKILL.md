@@ -1,17 +1,32 @@
 ---
 name: task-manager-evolution
-description: V6.2.7 任务管理与自我进化系统 - 智能缓存，自动备份，趋势分析，数据一致性保障
+description: V6.2.8 任务管理与自我进化系统 - 定时同步，滞后预警，趋势记录，Telegram 通知
 homepage: https://github.com/sandmark78/v61-docs
 metadata: {"openclaw":{"emoji":"🚀","requires":{"bins":["python3"],"env":[]},"primaryEnv":""}}
 ---
 
 # Task Manager & Evolution ⚡🚀
 
-**V6.2.7 联邦智能专用 - 任务管理与自我进化系统**
+**V6.2.8 联邦智能专用 - 任务管理与自我进化系统**
 
 ---
 
-## 🔥 V6.2.6 新增功能 (本次优化)
+## 🔥 V6.2.8 新增功能 (本次优化)
+
+### 自动化增强
+- ✅ **定时同步集成** - Cron 每小时自动执行数据同步
+- ✅ **滞后领域预警** - 进度低于平均 50% 时自动告警
+- ✅ **趋势记录增强** - 7 天历史数据 (168 条)，支持趋势分析
+- ✅ **Telegram 通知** - 数据不一致/滞后领域/里程碑主动通知
+- ✅ **频率限制** - 同类通知间隔>=1 小时，避免骚扰
+
+### V6.2.7 功能 (保留)
+- ✅ 智能缓存 (文件修改时间+TTL 双重验证)
+- ✅ 动态并行 (根据 CPU 核心数自动调整 worker 数量)
+- ✅ 增量更新 (只扫描变更目录，减少重复扫描)
+- ✅ 趋势分析 (速度历史记录 + 变化预测)
+
+### V6.2.6 功能 (保留)
 
 ### 性能优化
 - ✅ 智能缓存 (文件修改时间 + TTL 双重验证)
@@ -250,12 +265,17 @@ task-manager-evolution/
 │   ├── evolution_loop.py    # 进化循环
 │   ├── progress_tracker.py  # 进度追踪 ⭐ V6.2.1
 │   ├── validate_data.py     # 数据验证 ⭐ V6.2.2
-│   ├── auto_sync.py         # 自动同步 ⭐ V6.2.3 新增
-│   └── batch_ops.py         # 批量操作 ⭐ V6.2.3 新增
+│   ├── auto_sync.py         # 自动同步 ⭐ V6.2.3 新增 (V6.2.8: +通知)
+│   ├── batch_ops.py         # 批量操作 ⭐ V6.2.3 新增
+│   └── notify.py            # 通知模块 ⭐ V6.2.8 新增
+├── config/
+│   └── cron-task-manager    # Cron 配置 ⭐ V6.2.8 新增
 ├── data/
 │   ├── tasks.json           # 任务数据
 │   ├── progress.json        # 进度数据
 │   ├── evolution.json       # 进化数据
+│   ├── trend_history.json   # 趋势历史 ⭐ V6.2.8 新增
+│   ├── notify_history.json  # 通知历史 ⭐ V6.2.8 新增
 │   └── validation_report.json  # 验证报告
 └── reports/                 # 导出报告 ⭐ V6.2.3 新增
     ├── knowledge_stats_*.json
@@ -303,6 +323,7 @@ task-manager-evolution/
 
 | 版本 | 日期 | 关键变更 |
 |------|------|---------|
+| V6.2.8 | 2026-03-10 | **定时同步 + 通知系统** - Cron 每小时自动同步，滞后领域预警，7 天趋势记录，Telegram 通知，频率限制 |
 | V6.2.7 | 2026-03-08 | **数据一致性修复** - 自动同步校准 (progress.json/evolution.json), 验证 1021 知识点一致性，备份机制验证通过 |
 | V6.2.6 | 2026-03-07 | 智能缓存 (文件修改时间+TTL), 动态并行，自动备份，趋势分析，JSON 输出，实时监控 |
 | V6.2.4 | 2026-03-04 | 数据准确性优化，双轨计数系统，实时进度校准 |
@@ -315,6 +336,6 @@ task-manager-evolution/
 ---
 
 *此技能已真实创建*
-*版本：V6.2.6*
-*最后更新：2026-03-07 06:15 UTC*
+*版本：V6.2.8*
+*最后更新：2026-03-10 06:30 UTC*
 *验证：cat /workspace/skills/task-manager-evolution/SKILL.md*

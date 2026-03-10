@@ -31,6 +31,8 @@ PROGRESS_FILE = DATA_DIR / "progress.json"
 EVOLUTION_FILE = DATA_DIR / "evolution.json"
 VALIDATION_FILE = DATA_DIR / "validation_report.json"
 CACHE_FILE = DATA_DIR / ".cache.json"
+TREND_HISTORY_FILE = DATA_DIR / "trend_history.json"
+NOTIFY_HISTORY_FILE = DATA_DIR / "notify_history.json"
 
 # 报告输出目录
 REPORTS_DIR = SKILL_DIR / "reports"

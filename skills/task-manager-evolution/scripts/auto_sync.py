@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 """
-V6.2.6 自动同步器 - 高性能数据一致性保障 + 自动备份
+V6.2.8 自动同步器 - 高性能数据一致性保障 + 自动备份 + 通知 + 趋势记录
 
-优化点:
+优化点 (V6.2.8 新增):
+- Telegram 通知集成 (数据不一致/滞后领域/里程碑)
+- 趋势历史记录 (7 天数据，支持趋势分析)
+- 滞后领域自动检测与预警
+- 频率限制 (同类通知间隔>=1 小时)
+
+优化点 (V6.2.6):
 - 统一配置中心
 - 动态并行扫描 (根据 CPU 核心数调整)
 - 智能缓存 (文件修改时间验证)
@@ -20,6 +26,7 @@ python3 auto_sync.py --force           # 强制同步
 python3 auto_sync.py --check-only      # 仅检查不同步
 python3 auto_sync.py --json            # JSON 输出
 python3 auto_sync.py --no-backup       # 禁用备份
+python3 auto_sync.py --notify          # 发送通知
 """
 
 import json
@@ -28,7 +35,7 @@ import time
 import argparse
 import os
 import shutil
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Dict, Tuple, Optional, List
@@ -36,10 +43,13 @@ import hashlib
 
 # 导入统一配置
 from config import (
-    WORKSPACE, KNOWLEDGE_BASE, SKILL_DIR,
+    WORKSPACE, KNOWLEDGE_BASE, SKILL_DIR, DATA_DIR,
     TASKS_FILE, PROGRESS_FILE, EVOLUTION_FILE, VALIDATION_FILE,
     DOMAINS, get_total_target, CACHE_TTL, ensure_dirs
 )
+
+# 导入通知模块
+from notify import NotificationManager
 
 
 class BackupManager:
@@ -140,9 +150,9 @@ class DataValidator:
 
 
 class AutoSync:
-    """自动同步器 - 核心逻辑"""
+    """自动同步器 - 核心逻辑 (V6.2.8: +通知 + 趋势记录)"""
     
-    def __init__(self, use_backup: bool = True):
+    def __init__(self, use_backup: bool = True, enable_notify: bool = False):
         self.start_time = None
         self.stats = {
             "scanned": 0,
@@ -152,6 +162,7 @@ class AutoSync:
         }
         self.backup_manager = BackupManager() if use_backup else None
         self.validator = DataValidator()
+        self.notifier = NotificationManager() if enable_notify else None
     
     def count_domain(self, domain_id: str) -> int:
         """统计单个领域的知识点数 (用于并行)"""
@@ -288,6 +299,40 @@ class AutoSync:
         self.stats["updated"] += 1
         return progress
     
+    def record_trend(self, progress: dict):
+        """记录趋势历史 (V6.2.8 新增)"""
+        # 加载现有趋势历史
+        trend_file = DATA_DIR / "trend_history.json"
+        if trend_file.exists():
+            try:
+                with open(trend_file, 'r', encoding='utf-8') as f:
+                    trend_history = json.load(f)
+            except (json.JSONDecodeError, IOError):
+                trend_history = []
+        else:
+            trend_history = []
+        
+        # 添加新记录
+        trend_entry = {
+            "timestamp": datetime.now().isoformat(),
+            "total_points": progress["current"],
+            "percentage": progress["percentage"],
+            "speed": progress.get("speed", 300),
+            "domains": {k: v.get("percentage", 0) for k, v in progress.get("domains", {}).items()}
+        }
+        trend_history.append(trend_entry)
+        
+        # 保留最近 168 条 (7 天，每小时 1 条)
+        trend_history = trend_history[-168:]
+        
+        # 保存
+        trend_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(trend_file, 'w', encoding='utf-8') as f:
+            json.dump(trend_history, f, indent=2, ensure_ascii=False)
+        
+        if self.notifier:
+            print(f"   📈 趋势历史已记录 ({len(trend_history)} 条)")
+    
     def sync_evolution(self, progress: dict, force: bool = False) -> dict:
         """同步进化数据"""
         existing = self.load_json_file(EVOLUTION_FILE, {})
@@ -308,7 +353,7 @@ class AutoSync:
         
         # 更新进化数据
         evolution = {
-            "version": "V6.2.6",
+            "version": "V6.2.8",
             "last_cycle": datetime.now().isoformat(),
             "total_cycles": existing.get("total_cycles", 0) if existing else 0,
             "stats": {
@@ -340,16 +385,23 @@ class AutoSync:
         with open(EVOLUTION_FILE, 'w', encoding='utf-8') as f:
             json.dump(evolution, f, indent=2, ensure_ascii=False)
         
+        # 记录趋势历史
+        self.record_trend(progress)
+        
         print(f"   ✅ 进化数据已同步")
         self.stats["updated"] += 1
         return evolution
     
-    def run(self, force: bool = False, check_only: bool = False, json_output: bool = False) -> dict:
-        """执行自动同步"""
+    def run(self, force: bool = False, check_only: bool = False, json_output: bool = False, enable_notify: bool = False) -> dict:
+        """执行自动同步 (V6.2.8: +通知集成)"""
         self.start_time = time.time()
         
+        # 初始化通知器
+        if enable_notify:
+            self.notifier = NotificationManager()
+        
         if not json_output:
-            print("🔄 V6.2.6 自动同步器")
+            print("🔄 V6.2.8 自动同步器")
             print("=" * 70)
             print()
         
@@ -364,6 +416,10 @@ class AutoSync:
                 for issue in issues:
                     print(f"      - {issue}")
                 print()
+            
+            # 发送数据不一致通知
+            if self.notifier:
+                self.notifier.notify_data_sync(issues, total, force=force)
         else:
             if not json_output:
                 print(f"   ✅ 数据一致：{total} 知识点")
@@ -389,6 +445,15 @@ class AutoSync:
             print("🔄 同步数据...")
         progress = self.sync_progress(domain_counts, total, force)
         evolution = self.sync_evolution(progress, force)
+        
+        # 检查滞后领域并发送通知
+        if self.notifier:
+            lagging = self.notifier.check_lagging_domains(progress, force=force)
+            if lagging:
+                print(f"   ⚠️  发现 {len(lagging)} 个滞后领域")
+            
+            # 检查里程碑
+            self.notifier.notify_milestone(progress, force=force)
         
         # 清理旧备份
         if self.backup_manager:
@@ -419,16 +484,17 @@ class AutoSync:
 
 
 def main():
-    parser = argparse.ArgumentParser(description='V6.2.6 自动同步器')
+    parser = argparse.ArgumentParser(description='V6.2.8 自动同步器')
     parser.add_argument('--force', '-f', action='store_true', help='强制同步，即使数据一致')
     parser.add_argument('--check-only', '-c', action='store_true', help='仅检查，不同步')
     parser.add_argument('--no-backup', action='store_true', help='禁用备份')
     parser.add_argument('--json', '-j', action='store_true', help='JSON 输出模式')
     parser.add_argument('--quiet', '-q', action='store_true', help='静默模式')
+    parser.add_argument('--notify', '-n', action='store_true', help='启用通知 (Telegram/日志)')
     args = parser.parse_args()
     
-    syncer = AutoSync(use_backup=not args.no_backup)
-    result = syncer.run(force=args.force, check_only=args.check_only, json_output=args.json)
+    syncer = AutoSync(use_backup=not args.no_backup, enable_notify=args.notify)
+    result = syncer.run(force=args.force, check_only=args.check_only, json_output=args.json, enable_notify=args.notify)
     
     # 如果有问题，返回错误码
     if result.get("status") == "issues_found":
