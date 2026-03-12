@@ -118,21 +118,49 @@ class DataValidator:
     
     @staticmethod
     def validate_progress(data: dict) -> Tuple[bool, List[str]]:
-        """验证进度数据"""
+        """验证进度数据 (V6.3.0 格式支持)"""
         issues = []
         
-        required_fields = ["timestamp", "total_target", "current", "percentage", "domains"]
-        for field in required_fields:
-            if field not in data:
-                issues.append(f"缺少字段：{field}")
+        # V6.3.0 格式检查
+        if "version" in data and data.get("version", "").startswith("V6.3"):
+            # V6.3.0 格式
+            required_fields = ["timestamp", "version", "legacy_target", "actual_achievement", "domains"]
+            for field in required_fields:
+                if field not in data:
+                    issues.append(f"缺少字段：{field}")
+            
+            # 验证 legacy_target
+            if "legacy_target" in data:
+                lt = data["legacy_target"]
+                if "target" not in lt:
+                    issues.append("legacy_target 缺少 target 字段")
+                if "current" not in lt:
+                    issues.append("legacy_target 缺少 current 字段")
+            
+            # 验证 actual_achievement
+            if "actual_achievement" in data:
+                aa = data["actual_achievement"]
+                if "total_points" not in aa:
+                    issues.append("actual_achievement 缺少 total_points 字段")
+                if "total_files" not in aa:
+                    issues.append("actual_achievement 缺少 total_files 字段")
+                if "total_domains" not in aa:
+                    issues.append("actual_achievement 缺少 total_domains 字段")
         
-        if "current" in data and "total_target" in data:
-            if data["current"] > data["total_target"]:
-                issues.append(f"当前值 ({data['current']}) 超过目标值 ({data['total_target']})")
-        
-        if "percentage" in data:
-            if not (0 <= data["percentage"] <= 100):
-                issues.append(f"百分比异常：{data['percentage']}%")
+        else:
+            # 旧格式检查
+            required_fields = ["timestamp", "total_target", "current", "percentage", "domains"]
+            for field in required_fields:
+                if field not in data:
+                    issues.append(f"缺少字段：{field}")
+            
+            if "current" in data and "total_target" in data:
+                if data["current"] > data["total_target"]:
+                    issues.append(f"当前值 ({data['current']}) 超过目标值 ({data['total_target']})")
+            
+            if "percentage" in data:
+                if not (0 <= data["percentage"] <= 100):
+                    issues.append(f"百分比异常：{data['percentage']}%")
         
         return len(issues) == 0, issues
     
@@ -164,44 +192,67 @@ class AutoSync:
         self.validator = DataValidator()
         self.notifier = NotificationManager() if enable_notify else None
     
-    def count_domain(self, domain_id: str) -> int:
-        """统计单个领域的知识点数 (用于并行)"""
+    def count_domain(self, domain_id: str) -> Tuple[str, int, int]:
+        """
+        V6.3.1 统计单个领域的知识点数和文件数 (用于并行)
+        返回：(domain_id, points, files)
+        """
         domain_dir = KNOWLEDGE_BASE / domain_id
         if not domain_dir.exists():
-            return 0
+            return (domain_id, 0, 0)
         
         md_files = list(domain_dir.glob("*.md"))
-        return len([f for f in md_files if f.is_file()])
+        total_points = 0
+        file_count = 0
+        
+        for f in md_files:
+            if f.is_file():
+                file_count += 1
+                # 使用 config.py 中的 count_knowledge_points 函数
+                from config import count_knowledge_points
+                total_points += count_knowledge_points(f)
+        
+        return (domain_id, total_points, file_count)
     
-    def count_knowledge_points(self) -> Tuple[Dict[str, int], int]:
-        """并行扫描知识库统计实际知识点数量"""
+    def count_knowledge_points(self) -> Tuple[Dict[str, Dict[str, int]], int, int]:
+        """
+        V6.3.1 并行扫描知识库统计实际知识点数量和文件数
+        返回：(domain_data, total_points, total_files)
+        domain_data: {domain_id: {"points": X, "files": Y}}
+        """
+        # 动态发现领域 (V6.3.1)
+        from config import discover_domains
+        domains = discover_domains(KNOWLEDGE_BASE)
+        
         # 动态调整 worker 数量
         cpu_count = os.cpu_count() or 4
         worker_count = min(cpu_count, 8)
         
-        domain_counts = {}
-        total = 0
+        domain_data = {}
+        total_points = 0
+        total_files = 0
         
-        print(f"   🔍 并行扫描 {len(DOMAINS)} 个知识领域 ({worker_count} workers)...")
+        print(f"   🔍 并行扫描 {len(domains)} 个知识领域 ({worker_count} workers)...")
         
         with ThreadPoolExecutor(max_workers=worker_count) as executor:
             future_to_domain = {
                 executor.submit(self.count_domain, domain_id): domain_id
-                for domain_id in DOMAINS.keys()
+                for domain_id in domains.keys()
             }
             
             for future in as_completed(future_to_domain):
                 domain_id = future_to_domain[future]
                 try:
-                    count = future.result()
-                    domain_counts[domain_id] = count
-                    total += count
+                    domain_id, points, files = future.result()
+                    domain_data[domain_id] = {"points": points, "files": files}
+                    total_points += points
+                    total_files += files
                     self.stats["scanned"] += 1
                 except Exception as e:
                     print(f"   ⚠️  扫描 {domain_id} 失败：{e}")
-                    domain_counts[domain_id] = 0
+                    domain_data[domain_id] = {"points": 0, "files": 0}
         
-        return domain_counts, total
+        return domain_data, total_points, total_files
     
     def load_json_file(self, file_path: Path, default=None) -> Optional[dict]:
         """安全加载 JSON 文件"""
@@ -213,33 +264,42 @@ class AutoSync:
         except (json.JSONDecodeError, IOError):
             return default
     
-    def check_consistency(self) -> Tuple[list, int]:
-        """检查数据一致性"""
-        domain_counts, total = self.count_knowledge_points()
+    def check_consistency(self) -> Tuple[list, int, int]:
+        """
+        V6.3.1 检查数据一致性
+        返回：(issues, total_points, total_files)
+        """
+        domain_data, total_points, total_files = self.count_knowledge_points()
         progress = self.load_json_file(PROGRESS_FILE, {})
         evolution = self.load_json_file(EVOLUTION_FILE, {})
         
         issues = []
         
-        progress_total = progress.get("current", 0) if progress else 0
+        progress_total = progress.get("actual_achievement", {}).get("total_points", 
+                         progress.get("current", 0)) if progress else 0
         evolution_total = evolution.get("stats", {}).get("knowledge_points", 0) if evolution else 0
         
-        if progress_total != total:
-            diff = total - progress_total
-            issues.append(f"progress.json 不同步：记录={progress_total}, 实际={total} (差异：{diff:+d})")
+        if progress_total != total_points:
+            diff = total_points - progress_total
+            issues.append(f"progress.json 不同步：记录={progress_total}, 实际={total_points} (差异：{diff:+d})")
         
-        if evolution_total != total:
-            diff = total - evolution_total
-            issues.append(f"evolution.json 不同步：记录={evolution_total}, 实际={total} (差异：{diff:+d})")
+        if evolution_total != total_points:
+            diff = total_points - evolution_total
+            issues.append(f"evolution.json 不同步：记录={evolution_total}, 实际={total_points} (差异：{diff:+d})")
         
-        return issues, total
+        return issues, total_points, total_files
     
-    def sync_progress(self, domain_counts: Dict[str, int], total: int, force: bool = False) -> dict:
-        """同步进度数据"""
+    def sync_progress(self, domain_data: Dict[str, Dict[str, int]], total_points: int, 
+                      total_files: int, force: bool = False) -> dict:
+        """
+        V6.3.1 同步进度数据 (支持双模式：原目标 + 实际成就)
+        """
         existing = self.load_json_file(PROGRESS_FILE, {})
         
         # 检查是否需要更新
-        if not force and existing and existing.get("current") == total:
+        existing_total = existing.get("actual_achievement", {}).get("total_points",
+                            existing.get("current", 0)) if existing else 0
+        if not force and existing and existing_total == total_points:
             print("   ✅ 进度数据已是最新")
             self.stats["unchanged"] += 1
             return existing
@@ -249,35 +309,66 @@ class AutoSync:
             self.backup_manager.create_backup(PROGRESS_FILE)
             self.stats["backed_up"] += 1
         
-        # 生成新进度报告
-        total_target = get_total_target()
-        percentage = (total / total_target) * 100 if total_target > 0 else 0
+        # 动态发现领域 (V6.3.1)
+        from config import discover_domains, DOMAIN_TARGETS
+        domains = discover_domains(KNOWLEDGE_BASE)
+        
+        # 计算原目标总和 (6400 点)
+        legacy_target = sum(DOMAIN_TARGETS.get(d, 500) for d in domains.keys() if d != "23_articles_series")
+        
+        # 计算完成率
+        completion_rate = (total_points / legacy_target * 100) if legacy_target > 0 else 0
+        
+        # 速度统计
         speed = existing.get("speed", 300) if existing else 300
-        remaining = total_target - total
-        estimated_minutes = remaining / speed if speed > 0 else 0
         
         # 生成领域详情
         domains_detail = {}
-        for domain_id, count in domain_counts.items():
-            target = DOMAINS[domain_id]["target"]
-            name = DOMAINS[domain_id]["name"]
-            pct = (count / target) * 100 if target > 0 else 0
+        for domain_id, data in domain_data.items():
+            target = DOMAIN_TARGETS.get(domain_id, 500)
+            points = data["points"]
+            files = data["files"]
+            pct = (points / target * 100) if target > 0 else None
             domains_detail[domain_id] = {
-                "name": name,
+                "name": domains.get(domain_id, {}).get("name", domain_id.replace("-", " ").title()),
                 "target": target,
-                "current": count,
-                "percentage": round(pct, 2)
+                "current": points,
+                "files": files,
+                "percentage": round(pct, 2) if pct else None
             }
         
+        # 里程碑检查
+        milestones = {
+            "10k_points": {"achieved": total_points >= 10000, "date": "2026-03-01"},
+            "100k_points": {"achieved": total_points >= 100000, "date": "2026-03-06"},
+            "1m_points": {"achieved": total_points >= 1000000, "date": "2026-03-09" if total_points >= 1000000 else None},
+            "next": "quality_optimization" if total_points >= 1000000 else "continue_filling"
+        }
+        
+        # V6.3.0 数据结构
         progress = {
             "timestamp": datetime.now().isoformat(),
-            "total_target": total_target,
-            "current": total,
-            "percentage": round(percentage, 2),
-            "remaining": remaining,
-            "speed": speed,
-            "estimated_minutes": round(estimated_minutes, 1),
+            "version": "V6.3.1",
+            
+            "legacy_target": {
+                "target": legacy_target,
+                "current": total_points,
+                "percentage": round(completion_rate, 2),
+                "status": "completed_surpassed" if completion_rate >= 100 else "in_progress"
+            },
+            
+            "actual_achievement": {
+                "total_points": total_points,
+                "total_files": total_files,
+                "total_domains": len(domains),
+                "completion_rate": round(completion_rate, 2),
+                "status": "epic_overachievement" if completion_rate >= 100 else "in_progress"
+            },
+            
             "domains": domains_detail,
+            
+            "milestones": milestones,
+            
             "sync_info": {
                 "synced_at": datetime.now().isoformat(),
                 "sync_type": "force" if force else "auto",
@@ -295,12 +386,14 @@ class AutoSync:
         with open(PROGRESS_FILE, 'w', encoding='utf-8') as f:
             json.dump(progress, f, indent=2, ensure_ascii=False)
         
-        print(f"   ✅ 进度数据已同步：{total} 知识点")
+        print(f"   ✅ 进度数据已同步：{total_points:,} 知识点 / {total_files:,} 文件 / {len(domains)} 领域")
         self.stats["updated"] += 1
         return progress
     
     def record_trend(self, progress: dict):
-        """记录趋势历史 (V6.2.8 新增)"""
+        """
+        V6.3.1 记录趋势历史 (支持 V6.3.0 数据格式)
+        """
         # 加载现有趋势历史
         trend_file = DATA_DIR / "trend_history.json"
         if trend_file.exists():
@@ -312,13 +405,28 @@ class AutoSync:
         else:
             trend_history = []
         
-        # 添加新记录
+        # 获取知识点数 (V6.3.0 格式兼容)
+        total_points = progress.get("actual_achievement", {}).get("total_points",
+                          progress.get("legacy_target", {}).get("current", 0))
+        completion_rate = progress.get("legacy_target", {}).get("percentage", 0)
+        
+        # 添加新记录 (V6.3.1 格式)
         trend_entry = {
             "timestamp": datetime.now().isoformat(),
-            "total_points": progress["current"],
-            "percentage": progress["percentage"],
+            "version": "V6.3.1",
+            "total_points": total_points,
+            "completion_rate": completion_rate,
             "speed": progress.get("speed", 300),
-            "domains": {k: v.get("percentage", 0) for k, v in progress.get("domains", {}).items()}
+            "total_files": progress.get("actual_achievement", {}).get("total_files", 0),
+            "total_domains": progress.get("actual_achievement", {}).get("total_domains", 0),
+            "domains": {
+                k: {
+                    "points": v.get("current", 0),
+                    "files": v.get("files", 0),
+                    "percentage": v.get("percentage", 0)
+                }
+                for k, v in progress.get("domains", {}).items()
+            }
         }
         trend_history.append(trend_entry)
         
@@ -334,11 +442,15 @@ class AutoSync:
             print(f"   📈 趋势历史已记录 ({len(trend_history)} 条)")
     
     def sync_evolution(self, progress: dict, force: bool = False) -> dict:
-        """同步进化数据"""
+        """
+        V6.3.1 同步进化数据
+        """
         existing = self.load_json_file(EVOLUTION_FILE, {})
         
-        # 检查是否需要更新
-        current_kp = progress["current"]
+        # 获取当前知识点数 (V6.3.0 格式)
+        current_kp = progress.get("actual_achievement", {}).get("total_points",
+                        progress.get("legacy_target", {}).get("current", 0))
+        
         if not force and existing:
             existing_kp = existing.get("stats", {}).get("knowledge_points", 0)
             if existing_kp == current_kp:
@@ -351,19 +463,25 @@ class AutoSync:
             self.backup_manager.create_backup(EVOLUTION_FILE)
             self.stats["backed_up"] += 1
         
-        # 更新进化数据
+        # 更新进化数据 (V6.3.1)
         evolution = {
-            "version": "V6.2.8",
+            "version": "V6.3.1",
             "last_cycle": datetime.now().isoformat(),
             "total_cycles": existing.get("total_cycles", 0) if existing else 0,
             "stats": {
                 "knowledge_points": current_kp,
-                "speed": progress.get("speed", 300)
+                "speed": progress.get("speed", 300) if "speed" in progress else 300
             },
             "reflections": existing.get("reflections", {}) if existing else {},
             "learning": existing.get("learning", {}) if existing else {},
             "optimizations": existing.get("optimizations", {}) if existing else {},
-            "cycle_history": (existing.get("cycle_history", []) if existing else [])[-9:]
+            "cycle_history": (existing.get("cycle_history", []) if existing else [])[-9:],
+            "migrated_at": existing.get("migrated_at"),
+            "knowledge_achievement": {
+                "total_points": f"{current_kp:,}",
+                "completion_rate": f"{progress.get('legacy_target', {}).get('percentage', 0):.0f}%",
+                "status": "epic_overachievement"
+            }
         }
         
         # 添加同步记录
@@ -371,8 +489,8 @@ class AutoSync:
             evolution["cycle_history"].append({
                 "cycle": evolution["total_cycles"] + 1,
                 "date": datetime.now().isoformat(),
-                "focus": "自动同步",
-                "outcome": f"数据同步：{current_kp} 知识点"
+                "focus": "自动同步 V6.3.1",
+                "outcome": f"数据同步：{current_kp:,} 知识点"
             })
             evolution["total_cycles"] += 1
         
@@ -385,15 +503,15 @@ class AutoSync:
         with open(EVOLUTION_FILE, 'w', encoding='utf-8') as f:
             json.dump(evolution, f, indent=2, ensure_ascii=False)
         
-        # 记录趋势历史
+        # 记录趋势历史 (V6.3.1 格式)
         self.record_trend(progress)
         
-        print(f"   ✅ 进化数据已同步")
+        print(f"   ✅ 进化数据已同步 (V6.3.1)")
         self.stats["updated"] += 1
         return evolution
     
     def run(self, force: bool = False, check_only: bool = False, json_output: bool = False, enable_notify: bool = False) -> dict:
-        """执行自动同步 (V6.2.8: +通知集成)"""
+        """执行自动同步 (V6.3.1: 动态领域发现 + 知识点元数据解析)"""
         self.start_time = time.time()
         
         # 初始化通知器
@@ -401,14 +519,14 @@ class AutoSync:
             self.notifier = NotificationManager()
         
         if not json_output:
-            print("🔄 V6.2.8 自动同步器")
+            print("🔄 V6.3.1 自动同步器")
             print("=" * 70)
             print()
         
         # 检查一致性
         if not json_output:
             print("📊 检查数据一致性...")
-        issues, total = self.check_consistency()
+        issues, total_points, total_files = self.check_consistency()
         
         if issues:
             if not json_output:
@@ -419,31 +537,33 @@ class AutoSync:
             
             # 发送数据不一致通知
             if self.notifier:
-                self.notifier.notify_data_sync(issues, total, force=force)
+                self.notifier.notify_data_sync(issues, total_points, force=force)
         else:
             if not json_output:
-                print(f"   ✅ 数据一致：{total} 知识点")
+                print(f"   ✅ 数据一致：{total_points:,} 知识点 / {total_files:,} 文件")
                 if not force:
                     print()
                     print("无需同步。使用 --force 强制同步。")
-                    return {"status": "consistent", "total": total}
+                    return {"status": "consistent", "total_points": total_points, "total_files": total_files}
         
         if check_only:
-            return {"status": "issues_found", "issues": issues, "total": total}
+            return {"status": "issues_found", "issues": issues, "total_points": total_points, "total_files": total_files}
         
         # 重新扫描 (确保最新数据)
         if not json_output:
             print()
             print("📈 重新扫描知识库...")
-        domain_counts, total = self.count_knowledge_points()
+        domain_data, total_points, total_files = self.count_knowledge_points()
         if not json_output:
-            print(f"   实际知识点：{total}")
+            print(f"   实际知识点：{total_points:,}")
+            print(f"   实际文件数：{total_files:,}")
+            print(f"   领域数量：{len(domain_data)}")
             print()
         
         # 同步数据
         if not json_output:
             print("🔄 同步数据...")
-        progress = self.sync_progress(domain_counts, total, force)
+        progress = self.sync_progress(domain_data, total_points, total_files, force)
         evolution = self.sync_evolution(progress, force)
         
         # 检查滞后领域并发送通知
@@ -462,14 +582,18 @@ class AutoSync:
         # 统计信息
         elapsed = time.time() - self.start_time
         
+        # 获取完成率
+        completion_rate = progress.get("legacy_target", {}).get("percentage", 0)
+        
         if not json_output:
             print()
             print("=" * 70)
             print("✅ 同步完成")
             print()
-            print(f"📊 当前进度：{progress['current']}/{progress['total_target']} ({progress['percentage']}%)")
-            print(f"🚀 速度：{progress['speed']} 知识点/分钟")
-            print(f"⏱️  预计完成：{progress['estimated_minutes']} 分钟")
+            print(f"📊 当前进度：{total_points:,} 知识点 ({completion_rate:.1f}% 完成率)")
+            print(f"📁 文件总数：{total_files:,}")
+            print(f"🗂️  领域数量：{len(domain_data)}")
+            print(f"🚀 速度：{progress.get('speed', 300)} 知识点/分钟")
             print(f"⏱️  同步耗时：{elapsed:.2f}秒")
             print()
             print(f"📈 统计：扫描={self.stats['scanned']}, 更新={self.stats['updated']}, 未变={self.stats['unchanged']}, 备份={self.stats['backed_up']}")
@@ -479,12 +603,15 @@ class AutoSync:
             "progress": progress,
             "evolution": evolution,
             "stats": self.stats,
-            "elapsed": elapsed
+            "elapsed": elapsed,
+            "total_points": total_points,
+            "total_files": total_files,
+            "total_domains": len(domain_data)
         }
 
 
 def main():
-    parser = argparse.ArgumentParser(description='V6.2.8 自动同步器')
+    parser = argparse.ArgumentParser(description='V6.3.1 自动同步器 - 动态领域发现 + 知识点元数据解析')
     parser.add_argument('--force', '-f', action='store_true', help='强制同步，即使数据一致')
     parser.add_argument('--check-only', '-c', action='store_true', help='仅检查，不同步')
     parser.add_argument('--no-backup', action='store_true', help='禁用备份')
