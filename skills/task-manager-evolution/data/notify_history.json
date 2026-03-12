@@ -1,0 +1,20 @@
+{
+  "notifications": [
+    {
+      "timestamp": "2026-03-10T06:12:39.321797",
+      "level": "warning",
+      "category": "data_sync",
+      "message": "⚠️ 数据不一致检测\n发现 2 个问题:\n  - progress.json 不同步：记录=1021, 实际=1040 (差异：+19)\n  - evolution.json 不同步：记录=1021, 实际=1040 (差异：+19)\n已自动同步：1040 知识点"
+    },
+    {
+      "timestamp": "2026-03-10T06:12:39.335074",
+      "level": "warning",
+      "category": "lagging_domain",
+      "message": "滞后领域预警：OpenClaw (02-openclaw)\n进度：7.5% (平均：16.2%)\n差距：8.8%\n建议：优先填充该领域知识点"
+    }
+  ],
+  "last_sent": {
+    "data_sync": 1773123159.321412,
+    "lagging_domain": 1773123159.3350742
+  }
+}
