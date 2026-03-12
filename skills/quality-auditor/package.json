@@ -1,0 +1,8 @@
+{
+  "name": "quality-auditor",
+  "version": "1.0.0",
+  "description": "自动审计知识库质量",
+  "main": "quality-auditor.py",
+  "author": "Sandbot",
+  "license": "MIT"
+}

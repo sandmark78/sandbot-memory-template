@@ -1,0 +1,228 @@
+{
+  "timestamp": "2026-03-12T06:16:05.563864",
+  "version": "V6.3.1",
+  "legacy_target": {
+    "target": 13400,
+    "current": 413609,
+    "percentage": 3086.63,
+    "status": "completed_surpassed"
+  },
+  "actual_achievement": {
+    "total_points": 413609,
+    "total_files": 2107,
+    "total_domains": 27,
+    "completion_rate": 3086.63,
+    "status": "epic_overachievement"
+  },
+  "domains": {
+    "00-logs": {
+      "name": "00 Logs",
+      "target": 500,
+      "current": 3,
+      "files": 3,
+      "percentage": 0.6
+    },
+    "00-trends": {
+      "name": "00 Trends",
+      "target": 500,
+      "current": 1,
+      "files": 1,
+      "percentage": 0.2
+    },
+    "01-ai-agent": {
+      "name": "01 Ai Agent",
+      "target": 1000,
+      "current": 24129,
+      "files": 115,
+      "percentage": 2412.9
+    },
+    "02-openclaw": {
+      "name": "02 Openclaw",
+      "target": 800,
+      "current": 11935,
+      "files": 61,
+      "percentage": 1491.88
+    },
+    "03-federal-system": {
+      "name": "03 Federal System",
+      "target": 600,
+      "current": 17235,
+      "files": 90,
+      "percentage": 2872.5
+    },
+    "04-skill-dev": {
+      "name": "04 Skill Dev",
+      "target": 500,
+      "current": 18977,
+      "files": 91,
+      "percentage": 3795.4
+    },
+    "05-memory-system": {
+      "name": "05 Memory System",
+      "target": 400,
+      "current": 16477,
+      "files": 88,
+      "percentage": 4119.25
+    },
+    "06-growth-system": {
+      "name": "06 Growth System",
+      "target": 400,
+      "current": 16476,
+      "files": 87,
+      "percentage": 4119.0
+    },
+    "07-community": {
+      "name": "07 Community",
+      "target": 500,
+      "current": 16975,
+      "files": 88,
+      "percentage": 3395.0
+    },
+    "08-monetization": {
+      "name": "08 Monetization",
+      "target": 500,
+      "current": 17029,
+      "files": 93,
+      "percentage": 3405.8
+    },
+    "09-security": {
+      "name": "09 Security",
+      "target": 400,
+      "current": 17008,
+      "files": 88,
+      "percentage": 4252.0
+    },
+    "10-automation": {
+      "name": "10 Automation",
+      "target": 500,
+      "current": 16815,
+      "files": 89,
+      "percentage": 3363.0
+    },
+    "11-content": {
+      "name": "11 Content",
+      "target": 400,
+      "current": 16753,
+      "files": 87,
+      "percentage": 4188.25
+    },
+    "12-tools": {
+      "name": "12 Tools",
+      "target": 400,
+      "current": 16755,
+      "files": 89,
+      "percentage": 4188.75
+    },
+    "13-blockchain": {
+      "name": "13 Blockchain",
+      "target": 500,
+      "current": 20102,
+      "files": 87,
+      "percentage": 4020.4
+    },
+    "14-iot": {
+      "name": "14 Iot",
+      "target": 500,
+      "current": 22902,
+      "files": 86,
+      "percentage": 4580.4
+    },
+    "15-cloud": {
+      "name": "15 Cloud",
+      "target": 500,
+      "current": 16504,
+      "files": 87,
+      "percentage": 3300.8
+    },
+    "17-ml": {
+      "name": "17 Ml",
+      "target": 500,
+      "current": 16504,
+      "files": 87,
+      "percentage": 3300.8
+    },
+    "16-devops": {
+      "name": "16 Devops",
+      "target": 500,
+      "current": 16502,
+      "files": 85,
+      "percentage": 3300.4
+    },
+    "18-nlp": {
+      "name": "18 Nlp",
+      "target": 500,
+      "current": 16502,
+      "files": 85,
+      "percentage": 3300.4
+    },
+    "19-cv": {
+      "name": "19 Cv",
+      "target": 500,
+      "current": 16501,
+      "files": 84,
+      "percentage": 3300.2
+    },
+    "20-robotics": {
+      "name": "20 Robotics",
+      "target": 500,
+      "current": 16200,
+      "files": 82,
+      "percentage": 3240.0
+    },
+    "21-edge": {
+      "name": "21 Edge",
+      "target": 500,
+      "current": 16200,
+      "files": 82,
+      "percentage": 3240.0
+    },
+    "22-quantum": {
+      "name": "22 Quantum",
+      "target": 500,
+      "current": 16200,
+      "files": 82,
+      "percentage": 3240.0
+    },
+    "23-bio": {
+      "name": "23 Bio",
+      "target": 500,
+      "current": 16200,
+      "files": 82,
+      "percentage": 3240.0
+    },
+    "23_articles_series": {
+      "name": "23 Articles Series",
+      "target": 0,
+      "current": 23,
+      "files": 23,
+      "percentage": null
+    },
+    "24-finance": {
+      "name": "24 Finance",
+      "target": 500,
+      "current": 16701,
+      "files": 85,
+      "percentage": 3340.2
+    }
+  },
+  "milestones": {
+    "10k_points": {
+      "achieved": true,
+      "date": "2026-03-01"
+    },
+    "100k_points": {
+      "achieved": true,
+      "date": "2026-03-06"
+    },
+    "1m_points": {
+      "achieved": false,
+      "date": null
+    },
+    "next": "continue_filling"
+  },
+  "sync_info": {
+    "synced_at": "2026-03-12T06:16:05.563877",
+    "sync_type": "force",
+    "scan_time_ms": 279.6
+  }
+}

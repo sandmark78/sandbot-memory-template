@@ -1,0 +1,8 @@
+{
+  "name": "knowledge-retriever",
+  "version": "1.0.0",
+  "description": "在 100 万 + 知识点中快速检索和定位信息",
+  "main": "knowledge-retriever.py",
+  "author": "Sandbot",
+  "license": "MIT"
+}

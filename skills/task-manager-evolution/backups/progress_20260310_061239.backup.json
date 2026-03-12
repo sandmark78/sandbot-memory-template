@@ -1,0 +1,156 @@
+{
+  "timestamp": "2026-03-08T06:02:20.637526",
+  "total_target": 6400,
+  "current": 1021,
+  "percentage": 15.95,
+  "remaining": 5379,
+  "speed": 300,
+  "estimated_minutes": 17.9,
+  "domains": {
+    "01-ai-agent": {
+      "name": "AI Agent",
+      "target": 1000,
+      "current": 96,
+      "percentage": 9.6
+    },
+    "02-openclaw": {
+      "name": "OpenClaw",
+      "target": 800,
+      "current": 58,
+      "percentage": 7.25
+    },
+    "04-skill-dev": {
+      "name": "技能开发",
+      "target": 500,
+      "current": 88,
+      "percentage": 17.6
+    },
+    "03-federal-system": {
+      "name": "联邦系统",
+      "target": 600,
+      "current": 89,
+      "percentage": 14.83
+    },
+    "05-memory-system": {
+      "name": "记忆系统",
+      "target": 400,
+      "current": 87,
+      "percentage": 21.75
+    },
+    "06-growth-system": {
+      "name": "成长系统",
+      "target": 400,
+      "current": 86,
+      "percentage": 21.5
+    },
+    "08-monetization": {
+      "name": "变现",
+      "target": 500,
+      "current": 87,
+      "percentage": 17.4
+    },
+    "07-community": {
+      "name": "社区建设",
+      "target": 500,
+      "current": 86,
+      "percentage": 17.2
+    },
+    "09-security": {
+      "name": "安全",
+      "target": 400,
+      "current": 86,
+      "percentage": 21.5
+    },
+    "10-automation": {
+      "name": "自动化",
+      "target": 500,
+      "current": 87,
+      "percentage": 17.4
+    },
+    "11-content": {
+      "name": "内容创作",
+      "target": 400,
+      "current": 85,
+      "percentage": 21.25
+    },
+    "12-tools": {
+      "name": "工具",
+      "target": 400,
+      "current": 86,
+      "percentage": 21.5
+    }
+  },
+  "lagging_domains": [
+    {
+      "id": "01-ai-agent",
+      "name": "AI Agent",
+      "progress": 9.6
+    },
+    {
+      "id": "02-openclaw",
+      "name": "OpenClaw",
+      "progress": 7.249999999999999
+    },
+    {
+      "id": "04-skill-dev",
+      "name": "技能开发",
+      "progress": 17.599999999999998
+    },
+    {
+      "id": "03-federal-system",
+      "name": "联邦系统",
+      "progress": 14.833333333333334
+    },
+    {
+      "id": "05-memory-system",
+      "name": "记忆系统",
+      "progress": 21.75
+    },
+    {
+      "id": "06-growth-system",
+      "name": "成长系统",
+      "progress": 21.5
+    },
+    {
+      "id": "08-monetization",
+      "name": "变现",
+      "progress": 17.4
+    },
+    {
+      "id": "07-community",
+      "name": "社区建设",
+      "progress": 17.2
+    },
+    {
+      "id": "09-security",
+      "name": "安全",
+      "progress": 21.5
+    },
+    {
+      "id": "10-automation",
+      "name": "自动化",
+      "progress": 17.4
+    },
+    {
+      "id": "11-content",
+      "name": "内容创作",
+      "progress": 21.25
+    },
+    {
+      "id": "12-tools",
+      "name": "工具",
+      "progress": 21.5
+    }
+  ],
+  "trend": {
+    "trend": "stable",
+    "change": 0,
+    "prediction": "unknown"
+  },
+  "performance": {
+    "scan_time_ms": 11.05,
+    "speed_status": "NORMAL",
+    "progress_status": "CRITICAL",
+    "cache_used": true
+  }
+}
