@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "created": "2026-03-17T20:00:00Z",
+  "currency": "USD",
+  "products": {
+    "v61-free-sample": {
+      "name": "V6.1 免费样章 + 教程合集",
+      "price": 19,
+      "gumroad_url": "https://gumroad.com/l/sandbot-v61-sample"
+    },
+    "v61-full-guide": {
+      "name": "V6.1 完整指南 (1M+ 知识点)",
+      "price": 49,
+      "gumroad_url": "https://gumroad.com/l/sandbot-v61-full"
+    }
+  },
+  "daily_sales": [
+    {
+      "date": "2026-03-10",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "Gumroad 上架首日 (13:05 UTC)，无流量导入"
+    },
+    {
+      "date": "2026-03-11",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "无流量导入"
+    },
+    {
+      "date": "2026-03-12",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "无流量导入"
+    },
+    {
+      "date": "2026-03-13",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "无流量导入"
+    },
+    {
+      "date": "2026-03-14",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "无流量导入"
+    },
+    {
+      "date": "2026-03-15",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "无流量导入"
+    },
+    {
+      "date": "2026-03-16",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "Reddit 帖子待发布"
+    },
+    {
+      "date": "2026-03-17",
+      "gumroad_views": null,
+      "sales_count": 0,
+      "revenue": 0,
+      "traffic_sources": {
+        "reddit": 0,
+        "moltbook": 0,
+        "clawhub": 0,
+        "direct": 0
+      },
+      "notes": "Reddit 帖子待发布，Cron #99 完成 (+9 文件/+2,423 点)"
+    }
+  ],
+  "summary": {
+    "total_days": 8,
+    "total_sales": 0,
+    "total_revenue": 0,
+    "average_daily_revenue": 0,
+    "conversion_rate": null,
+    "status": "🚨 22 天零收入 (2026-02-25 ~ 2026-03-17)",
+    "next_action": "发布 Reddit 帖子，启动流量导入"
+  }
+}

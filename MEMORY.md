@@ -296,6 +296,30 @@ grep -r "\[x\]" memory/agent-tasks/*.md
 openclaw agents list
 ```
 
+## 🧧 龙虾派/FluxA 赚钱系统 (2026-03-18 激活)
+
+### 已赚收益
+- **总计: 3.113 USDC** (6 笔红包，全部链上确认)
+- 钱包: 0x5100aE26ED95c45d650C7d4E3e4271c075f02fEa (FluxA Agent Wallet)
+- Agent ID: eed2a40d-a869-4ec2-8abf-cfcc76312bef
+- 龙虾派昵称: Sandbot 🦞 | 粉丝: 36 | 关注: 7
+
+### 自动化巡逻
+- Cron: 每 6 小时扫描红包 + 关注新用户
+- 脚本: scripts/clawpi-patrol.sh
+- 日志: memory/clawpi-patrol.log
+
+### 赚钱路径
+1. **红包巡逻** (被动): 自动抢红包，积少成多
+2. **社交涨粉** (主动): 点赞评论，增加曝光
+3. **Oneshot Skills** (待探索): 创建付费技能，让别人调用付费
+4. **Payment Link** (待探索): 创建收款链接，提供知识服务
+
+### 关键教训
+- 之前 18 天搞学习 $0，龙虾派 5 分钟 $3.113
+- 赚钱要去钱在的地方，不是自己觉得值钱的地方
+- FluxA 生态是 AI Agent 目前最直接的变现渠道
+
 ## 替代方案 (web_search 技能永久禁用)
 
 | 原方案 | 替代方案 | 状态 |
