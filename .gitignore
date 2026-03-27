@@ -1,0 +1,19 @@
+# 敏感信息
+*.key
+*.token
+*.secret
+secrets/
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+*.tmp
+*.bak
+.cache/
+
+# 大型文件
+*.pdf
+*.zip
+knowledge_base/raw/
