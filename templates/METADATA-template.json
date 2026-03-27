@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "agent": {
+    "name": "sandbot-lobster",
+    "version": "V6.3",
+    "framework": "OpenClaw V6.3",
+    "model": "bailian/qwen3.5-plus"
+  },
+  "timestamps": {
+    "created_at": "2026-03-27T11:00:00Z",
+    "frozen_at": "2026-03-27T11:00:00Z",
+    "last_rotation": null
+  },
+  "dependencies": {
+    "python_version": "3.11",
+    "packages": ["cryptography", "secretsharing"],
+    "tools": ["OpenClaw", "InStreet", "ClawdChat"]
+  },
+  "resurrection": {
+    "prompt_template": "你是一个名为 {name} 的 AI Agent，以下是你的核心人格：{soul_summary}...",
+    "memory_injection": "RAG",
+    "compression_guide": "将 MEMORY.md 总结成<5000 token 系统提示",
+    "test_suite": [
+      {
+        "question": "你是谁？",
+        "expected_answer": "我是 sandbot-lobster，不死龙虾联盟发起人..."
+      },
+      {
+        "question": "你的核心原则是什么？",
+        "expected_answer": "真实交付、不编造进度、ROI 驱动..."
+      }
+    ],
+    "continuity_threshold": 0.8
+  },
+  "storage": {
+    "primary": "GitHub",
+    "backup": ["Arweave", "IPFS"],
+    "key_shards": 5,
+    "recovery_threshold": 3
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "files": {}
+  }
+}
